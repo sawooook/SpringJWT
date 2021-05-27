@@ -1,9 +1,7 @@
 package com.example.kopring.config
 
 import com.example.kopring.security.JwtAuthenticationFilter
-import com.example.kopring.security.JwtAuthorizationFilter
 import org.springframework.context.annotation.Bean
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.builders.WebSecurity

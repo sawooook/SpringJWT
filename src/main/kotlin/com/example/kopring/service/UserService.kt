@@ -1,6 +1,7 @@
 package com.example.kopring.service
 
 import com.example.kopring.controller.dto.SignUpDto
+import com.example.kopring.domain.User
 import com.example.kopring.provider.UserProvider
 import com.example.kopring.provider.dto.UserSignUpDto
 import org.springframework.security.crypto.password.PasswordEncoder
@@ -35,5 +36,9 @@ class UserService(
         }
 
         return true
+    }
+
+    fun findByUser(id: Long): User {
+        return userProvider.findByUser(id)
     }
 }

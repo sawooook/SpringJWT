@@ -23,4 +23,8 @@ class UserProvider(
         userSignUpDto: UserSignUpDto
     ) =
         userRepository.save(User.from(userSignUpDto))
+
+    fun findByUser(id: Long): User {
+        return userRepository.findById(id) ?: throw NotFoundException("not found user")
+    }
 }
