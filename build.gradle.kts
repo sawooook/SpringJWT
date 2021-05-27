@@ -27,13 +27,10 @@ dependencies {
 	runtimeOnly("com.h2database:h2")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("org.springframework.security:spring-security-test")
-
-
 	//security
 	implementation("org.springframework.boot:spring-boot-starter-security")
-	implementation("org.springframework.security:spring-security-config")
-	implementation("org.springframework.security:spring-security-jwt")
-	implementation("org.springframework.security.oauth:spring-security-oauth2")
+	implementation ("io.jsonwebtoken:jjwt:0.7.0")
+
 
 	//tooling
 	implementation("org.apache.commons:commons-lang3:3.7")
