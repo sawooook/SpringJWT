@@ -11,18 +11,19 @@ import kotlin.math.min
 class User(
     var email: String,
     var password: String,
-    var nickName: String
+    var nickName: String,
 ) {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Long? = null
+    var role: UserRole = UserRole.ROLE_USER
 
     companion object {
         fun from(userSignUpDto: UserSignUpDto): User {
             return User(
                 email = userSignUpDto.email,
                 password = userSignUpDto.encodePassword,
-                nickName = userSignUpDto.nickName
+                nickName = userSignUpDto.nickName,
             )
         }
     }

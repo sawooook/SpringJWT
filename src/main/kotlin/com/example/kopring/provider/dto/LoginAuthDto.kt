@@ -1,6 +1,7 @@
 package com.example.kopring.provider.dto
 
 import com.example.kopring.domain.User
+import com.example.kopring.domain.UserRole
 import org.springframework.security.core.GrantedAuthority
 import org.springframework.security.core.authority.SimpleGrantedAuthority
 import org.springframework.security.core.userdetails.UserDetails
@@ -9,11 +10,12 @@ data class LoginAuthDto(
     var id: Long,
     var nickName: String,
     var email: String,
+    var role: UserRole,
     private val password: String
 ): UserDetails {
 
     override fun getAuthorities(): MutableCollection<out GrantedAuthority> {
-        return mutableListOf(SimpleGrantedAuthority("ROLE_USER"))
+        return mutableListOf(SimpleGrantedAuthority(role.toString()))
     }
 
     override fun getPassword(): String {
@@ -46,7 +48,8 @@ data class LoginAuthDto(
                 id = findUser.id!!,
                 email = findUser.email,
                 password = findUser.password,
-                nickName = findUser.nickName
+                nickName = findUser.nickName,
+                role = findUser.role
             )
         }
     }

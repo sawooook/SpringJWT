@@ -1,20 +1,22 @@
 package com.example.kopring.dto
 
+import com.example.kopring.domain.User
+import com.example.kopring.domain.UserRole
 import org.springframework.security.core.GrantedAuthority
 import org.springframework.security.core.authority.SimpleGrantedAuthority
-import org.springframework.security.core.userdetails.User
 import org.springframework.security.core.userdetails.UserDetails
 
-class UserDetail(user: com.example.kopring.domain.User): UserDetails {
-
-    private val id: Long? = user.id
-    private val username: String = user.email
-    private val password: String = user.password
+class UserDetail(
+    private val id: Long?,
+    private val username: String,
+    private val password: String,
+    private val authorities: UserRole
+): UserDetails {
 
     fun getId() = this.id
 
-    override fun getAuthorities(): MutableCollection<out GrantedAuthority> {
-        return this.authorities
+    override fun getAuthorities(): MutableList<GrantedAuthority> {
+        return mutableListOf(SimpleGrantedAuthority(authorities.toString()))
     }
 
     override fun isEnabled(): Boolean {
