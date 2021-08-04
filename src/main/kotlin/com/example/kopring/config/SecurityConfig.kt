@@ -43,7 +43,6 @@ class SecurityConfig(
     }
 
     override fun configure(auth: AuthenticationManagerBuilder) {
-        auth.authenticationProvider()
         auth.inMemoryAuthentication()
             .withUser("user")
             .password(passwordEncoder().encode("password"))
